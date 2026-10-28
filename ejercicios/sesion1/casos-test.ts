@@ -1,4 +1,4 @@
-const casos = [
+const casosDePrueba = [
   {
     id: 1,
     titulo: "Login válido",
@@ -31,36 +31,36 @@ const casos = [
   },
 ];
 
-function contarPorPrioridad(casos: any[]) {
+function contarPorPrioridad(casosDePrueba: any[]) {
   const resultado = {
     alta: 0,
     media: 0,
     baja: 0,
   };
 
-  casos.forEach((caso) => {
+  casosDePrueba.forEach((caso) => {
     resultado[caso.prioridad as keyof typeof resultado]++;
   });
 
   return resultado;
 }
 
-function listarPendientes(casos: any[]) {
-  return casos.filter((caso) => !caso.ejecutado);
+function listarPendientes(casosDePrueba: any[]) {
+  return casosDePrueba.filter((caso) => !caso.ejecutado);
 }
 
-const formatearCaso = (caso: any): string => {
+const formatCaso = (caso: any): string => {
   return `#${caso.id} - ${caso.titulo} (${caso.prioridad}) - ${
     caso.ejecutado ? "Ejecutado" : "Pendiente"
   }`;
 };
 
-casos.forEach((caso) => {
-  console.log(formatearCaso(caso));
+casosDePrueba.forEach((caso) => {
+  console.log(formatCaso(caso));
 });
 
 console.log("Cantidad por prioridad:");
-console.log(contarPorPrioridad(casos));
+console.log(contarPorPrioridad(casosDePrueba));
 
 console.log("Casos pendientes:");
-console.log(listarPendientes(casos));
+console.log(listarPendientes(casosDePrueba));
